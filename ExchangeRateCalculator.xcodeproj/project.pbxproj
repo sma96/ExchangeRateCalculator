@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCD2B58011A00639CB9 /* AppDelegate.swift */; };
 		CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */; };
-		CD902FD22B58011A00639CB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FD12B58011A00639CB9 /* ViewController.swift */; };
+		CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FD12B58011A00639CB9 /* MainViewController.swift */; };
 		CD902FD52B58011A00639CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD902FD32B58011A00639CB9 /* Main.storyboard */; };
 		CD902FD72B58012000639CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD902FD62B58012000639CB9 /* Assets.xcassets */; };
+		CD902FE32B5AAF8C00639CB9 /* KeyValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CD902FCA2B58011A00639CB9 /* ExchangeRateCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRateCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD902FCD2B58011A00639CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CD902FD12B58011A00639CB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD902FD12B58011A00639CB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD902FD42B58011A00639CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD902FD62B58012000639CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD902FDB2B58012000639CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		CD902FCC2B58011A00639CB9 /* ExchangeRateCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				CD902FE12B5AAF8000639CB9 /* View */,
 				CD902FCD2B58011A00639CB9 /* AppDelegate.swift */,
 				CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */,
-				CD902FD12B58011A00639CB9 /* ViewController.swift */,
+				CD902FD12B58011A00639CB9 /* MainViewController.swift */,
 				CD902FD32B58011A00639CB9 /* Main.storyboard */,
 				CD902FD62B58012000639CB9 /* Assets.xcassets */,
 				CD902FDB2B58012000639CB9 /* Info.plist */,
 			);
 			path = ExchangeRateCalculator;
+			sourceTree = "<group>";
+		};
+		CD902FE12B5AAF8000639CB9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD902FD22B58011A00639CB9 /* ViewController.swift in Sources */,
+				CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */,
 				CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */,
 				CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */,
+				CD902FE32B5AAF8C00639CB9 /* KeyValueLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
