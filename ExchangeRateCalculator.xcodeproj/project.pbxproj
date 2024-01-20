@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD2843912B5C0C15004F8D32 /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2843902B5C0C15004F8D32 /* Local.swift */; };
 		CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */; };
 		CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCD2B58011A00639CB9 /* AppDelegate.swift */; };
 		CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD2843902B5C0C15004F8D32 /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyType+Enum.swift"; sourceTree = "<group>"; };
 		CD902FCA2B58011A00639CB9 /* ExchangeRateCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRateCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD902FCD2B58011A00639CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD28438F2B5C0C02004F8D32 /* LocalDataBase */ = {
+			isa = PBXGroup;
+			children = (
+				CD2843902B5C0C15004F8D32 /* Local.swift */,
+			);
+			path = LocalDataBase;
+			sourceTree = "<group>";
+		};
 		CD902FC12B58011A00639CB9 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +76,7 @@
 		CD902FCC2B58011A00639CB9 /* ExchangeRateCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				CD28438F2B5C0C02004F8D32 /* LocalDataBase */,
 				CDC3DD142B5B89DA00926CB3 /* ViewModel */,
 				CDC3DD112B5B867600926CB3 /* Model */,
 				CDC3DD1C2B5BA9AB00926CB3 /* ViewController */,
@@ -189,6 +200,7 @@
 				CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */,
 				CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */,
 				CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */,
+				CD2843912B5C0C15004F8D32 /* Local.swift in Sources */,
 				CDC3DD162B5B89E600926CB3 /* CurrencyManager.swift in Sources */,
 				CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */,
 				CDC3DD1E2B5BB9BA00926CB3 /* NetworkError+Enum.swift in Sources */,

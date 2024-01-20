@@ -93,8 +93,10 @@ class MainViewController: UIViewController {
     }()
     
     private let currencyManager: CurrencyManager = CurrencyManager()
-    var currencyTag: Int = 0
     let currencies: [CurrencyType] = [.KRW, .JPY, .PHP]
+    var currencyType: CurrencyType {
+        return currencies[Local.DB.currencyTag]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,17 +106,17 @@ class MainViewController: UIViewController {
         
         pickerView.delegate = self
         pickerView.dataSource = self
+        pickerView.selectRow(Local.DB.currencyTag, inComponent: 0, animated: false)
+        
+        let currencyName = currencyType == .KRW ? "KRW" : currencyType == .JPY ? "JPY" : "PHP"
+        
+        receivingCountryLabel.setValueText("\(currencyType.rawValue)")
+        exchangeRateLabel.setValueText("?? \(currencyName) / USD")
         
         inquiryTimeLabel.refreshButton.addTarget(self, action: #selector(getCurrencyData), for: .touchUpInside)
         
-        getCurrencyData()
+//        getCurrencyData()
         setLayout()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-//        setText()
     }
 
     @objc func getCurrencyData() {
@@ -126,7 +128,10 @@ class MainViewController: UIViewController {
                 DispatchQueue.main.async {
                     guard let text = self.remittanceAmountLabel.textField.text else { return }
                     
-                    print(res.quotes.krw * Double(text.isEmpty ? "0" : text)!)
+                    let currencyName = self.currencyType == .KRW ? "KRW" : self.currencyType == .JPY ? "JPY" : "PHP"
+                    let amount = self.currencyManager.getExchangeRate(type: self.currencyType)
+                    
+                    self.exchangeRateLabel.setValueText("\(amount) \(currencyName) / USD")
                 }
                 
             case .failure(let error):
@@ -139,7 +144,7 @@ class MainViewController: UIViewController {
     }
     
     func calculateExchangeRate(from usd: String, to currencyName: String) {
-        let exchageRate = currencyManager.getExchangeRate(type: currencies[currencyTag])
+        let exchageRate = currencyManager.getExchangeRate(type: currencies[Local.DB.currencyTag])
         let amount = exchageRate * (Double(usd) ?? 0.0)
         
         resultLabel.text = "수취금액은 \(amount) \(currencyName) 입니다."
@@ -194,14 +199,6 @@ extension MainViewController {
             pickerView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
-    
-    func setText() {
-        remittanceCountryLabel.setValueText("미국(USD)")
-        receivingCountryLabel.setValueText("한국 (KRW)")
-        exchangeRateLabel.setValueText("1,130.05 KRW / USD")
-        inquiryTimeLabel.setValueText("2019-03-20 16:13")
-        remittanceAmountLabel.setValueText("USD")
-    }
 }
 
 //MARK: - 숫자만 입력 받을 수 있게 설정
@@ -220,11 +217,10 @@ extension MainViewController: UITextFieldDelegate {
             return false
         }
         
-        let currencyType = currencies[currencyTag]
         let currencyName = currencyType == .KRW ? "KRW" : currencyType == .JPY ? "JPY" : "PHP"
 
         calculateExchangeRate(from: newString, to: currencyName)
-//
+        
         return true
     }
 }
@@ -244,9 +240,8 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currencyTag = row
-        
-        let currencyType = currencies[row]
+        Local.DB.currencyTag = row
+    
         let currencyName = currencyType == .KRW ? "KRW" : currencyType == .JPY ? "JPY" : "PHP"
         let exchangeRate = currencyManager.getExchangeRate(type: currencyType)
         
