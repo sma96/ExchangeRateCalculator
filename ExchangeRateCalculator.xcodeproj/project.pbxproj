@@ -13,6 +13,9 @@
 		CD902FD52B58011A00639CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD902FD32B58011A00639CB9 /* Main.storyboard */; };
 		CD902FD72B58012000639CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD902FD62B58012000639CB9 /* Assets.xcassets */; };
 		CD902FE32B5AAF8C00639CB9 /* KeyValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */; };
+		CDC3DD132B5B87A200926CB3 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD122B5B87A100926CB3 /* DataModel.swift */; };
+		CDC3DD162B5B89E600926CB3 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD152B5B89E600926CB3 /* CurrencyManager.swift */; };
+		CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		CD902FD62B58012000639CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD902FDB2B58012000639CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueLabel.swift; sourceTree = "<group>"; };
+		CDC3DD122B5B87A100926CB3 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		CDC3DD152B5B89E600926CB3 /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
+		CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyDataTranjaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +62,12 @@
 		CD902FCC2B58011A00639CB9 /* ExchangeRateCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				CDC3DD142B5B89DA00926CB3 /* ViewModel */,
+				CDC3DD112B5B867600926CB3 /* Model */,
+				CDC3DD1C2B5BA9AB00926CB3 /* ViewController */,
 				CD902FE12B5AAF8000639CB9 /* View */,
 				CD902FCD2B58011A00639CB9 /* AppDelegate.swift */,
 				CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */,
-				CD902FD12B58011A00639CB9 /* MainViewController.swift */,
 				CD902FD32B58011A00639CB9 /* Main.storyboard */,
 				CD902FD62B58012000639CB9 /* Assets.xcassets */,
 				CD902FDB2B58012000639CB9 /* Info.plist */,
@@ -73,6 +81,31 @@
 				CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CDC3DD112B5B867600926CB3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDC3DD122B5B87A100926CB3 /* DataModel.swift */,
+				CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CDC3DD142B5B89DA00926CB3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CDC3DD152B5B89E600926CB3 /* CurrencyManager.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CDC3DD1C2B5BA9AB00926CB3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD902FD12B58011A00639CB9 /* MainViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +178,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC3DD132B5B87A200926CB3 /* DataModel.swift in Sources */,
 				CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */,
 				CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */,
 				CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */,
+				CDC3DD162B5B89E600926CB3 /* CurrencyManager.swift in Sources */,
+				CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */,
 				CD902FE32B5AAF8C00639CB9 /* KeyValueLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -72,10 +72,34 @@ class MainViewController: UIViewController {
         return label
     }()
     
+    let resultLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.text = "수취금액은 113,004,98 KRW 입니다."
+        
+        return label
+    }()
+    
+    let currencyManager: CurrencyManager = CurrencyManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        remittanceAmountLabel.textField.delegate = self
+        currencyManager.getCurrencyData { result in
+            switch result {
+            case .success(let res):
+                print(res)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         setLayout()
     }
     
@@ -94,6 +118,7 @@ extension MainViewController {
         view.addSubview(exchangeRateLabel)
         view.addSubview(inquiryTimeLabel)
         view.addSubview(remittanceAmountLabel)
+        view.addSubview(resultLabel)
         
         NSLayoutConstraint.activate([
             titlelabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -119,7 +144,12 @@ extension MainViewController {
             
             remittanceAmountLabel.topAnchor.constraint(equalTo: inquiryTimeLabel.bottomAnchor, constant: 10),
             remittanceAmountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            remittanceAmountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            remittanceAmountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            resultLabel.topAnchor.constraint(equalTo: remittanceAmountLabel.bottomAnchor, constant: 50),
+            resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            resultLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
@@ -128,6 +158,16 @@ extension MainViewController {
         receivingCountryLabel.setValueText("한국 (KRW)")
         exchangeRateLabel.setValueText("1,130.05 KRW / USD")
         inquiryTimeLabel.setValueText("2019-03-20 16:13")
-        remittanceAmountLabel.setValueText("100USD")
+        remittanceAmountLabel.setValueText("USD")
+    }
+}
+
+//MARK: - 숫자만 입력 받을 수 있게 설정
+extension MainViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.range(of: "^[0-9]*$", options: .regularExpression) != nil {
+            return true
+        }
+        return false
     }
 }

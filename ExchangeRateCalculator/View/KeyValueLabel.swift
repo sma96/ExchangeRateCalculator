@@ -14,6 +14,7 @@ class KeyValueLabel: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fill
+        stackView.spacing = 4
         
         return stackView
     }()
@@ -36,7 +37,6 @@ class KeyValueLabel: UIView {
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = .black
         label.textAlignment = .left
-        label.backgroundColor = .blue
         
         return label
     }()
@@ -72,6 +72,7 @@ class KeyValueLabel: UIView {
         textField.keyboardType = .numberPad
         textField.borderStyle = .line
         textField.isHidden = true
+        textField.font = .systemFont(ofSize: 12, weight: .regular)
         
         return textField
     }()
@@ -121,8 +122,6 @@ extension KeyValueLabel {
     
     private func setValueLabelWidth(_ size: CGSize) {
         valueLabelWidthConstraint.constant = size.width
-
-        print(size)
     }
     
     func setValueText(_ text: String) {
