@@ -115,10 +115,18 @@ class MainViewController: UIViewController {
         
         inquiryTimeLabel.refreshButton.addTarget(self, action: #selector(getCurrencyData), for: .touchUpInside)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScreen))
+        view.addGestureRecognizer(tapGesture)
+        
 //        getCurrencyData()
         setLayout()
     }
-
+    
+    //MARK: - hide keyboard
+    @objc func didTapScreen() {
+        view.endEditing(true)
+    }
+    
     @objc func getCurrencyData() {
         inquiryTimeLabel.startLodingAnimation()
         
@@ -148,6 +156,15 @@ class MainViewController: UIViewController {
         let amount = exchageRate * (Double(usd) ?? 0.0)
         
         resultLabel.text = "수취금액은 \(amount) \(currencyName) 입니다."
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .cancel)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: false)
     }
 }
 
@@ -196,7 +213,7 @@ extension MainViewController {
             pickerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             pickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             pickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            pickerView.heightAnchor.constraint(equalToConstant: 200)
+            pickerView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
 }
@@ -207,12 +224,14 @@ extension MainViewController: UITextFieldDelegate {
         guard let oldString = textField.text, let newRange = Range(range, in: oldString) else { return false }
         if !string.isEmpty && string.range(of: "^[0-9]*$", options: .regularExpression) == nil {
             // showAlert
+            showAlert(title: "입력 오류", message: "숫자만 입력해주세요")
             return false
         }
         
         let newString = oldString.replacingCharacters(in: newRange, with: string)
-        
-        guard newString.count < 6 else {
+        print("\(newString)|")
+        guard newString.count < 6, (Int(newString.isEmpty ? "0" : newString) ?? Int.max) <= 10000 else {
+            showAlert(title: "입력 오류", message: "10000USD 이하만 입력 가능합니다.")
             // showAlert
             return false
         }
