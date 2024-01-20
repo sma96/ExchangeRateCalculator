@@ -7,15 +7,6 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case ResponseError
-    case TimeoutError
-    case DecodeError
-    case URLError
-    case DataError
-    case UnknownError
-}
-
 public class CurrencyManager {
     private var currency: DataModel = DataModel()
     private var completion: ((Result<CurrencyResponse, NetworkError>) -> Void)?
@@ -26,6 +17,17 @@ public class CurrencyManager {
 }
 
 extension CurrencyManager {
+    func getExchangeRate(type: CurrencyType) -> Double {
+        switch type {
+        case .KRW:
+            return currency.response?.quotes.krw ?? 0.0
+        case .JPY:
+            return currency.response?.quotes.jpy ?? 0.0
+        case .PHP:
+            return currency.response?.quotes.php ?? 0.0
+        }
+    }
+    
     func getCurrencyData(completion: @escaping (Result<CurrencyResponse, NetworkError>) -> Void) {
         var transaction = GetCurrencyDataTransaction()
         

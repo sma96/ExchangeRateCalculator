@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */; };
 		CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCD2B58011A00639CB9 /* AppDelegate.swift */; };
 		CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */; };
 		CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FD12B58011A00639CB9 /* MainViewController.swift */; };
@@ -16,9 +17,11 @@
 		CDC3DD132B5B87A200926CB3 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD122B5B87A100926CB3 /* DataModel.swift */; };
 		CDC3DD162B5B89E600926CB3 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD152B5B89E600926CB3 /* CurrencyManager.swift */; };
 		CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */; };
+		CDC3DD1E2B5BB9BA00926CB3 /* NetworkError+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyType+Enum.swift"; sourceTree = "<group>"; };
 		CD902FCA2B58011A00639CB9 /* ExchangeRateCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRateCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD902FCD2B58011A00639CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		CDC3DD122B5B87A100926CB3 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		CDC3DD152B5B89E600926CB3 /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
 		CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyDataTranjaction.swift; sourceTree = "<group>"; };
+		CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Enum.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 			children = (
 				CDC3DD122B5B87A100926CB3 /* DataModel.swift */,
 				CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */,
+				CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */,
+				CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,11 +185,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDC3DD132B5B87A200926CB3 /* DataModel.swift in Sources */,
+				CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */,
 				CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */,
 				CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */,
 				CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */,
 				CDC3DD162B5B89E600926CB3 /* CurrencyManager.swift in Sources */,
 				CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */,
+				CDC3DD1E2B5BB9BA00926CB3 /* NetworkError+Enum.swift in Sources */,
 				CD902FE32B5AAF8C00639CB9 /* KeyValueLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
