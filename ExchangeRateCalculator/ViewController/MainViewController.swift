@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class MainViewController: UIViewController {
     let titlelabel: UILabel = {
@@ -92,16 +93,26 @@ class MainViewController: UIViewController {
         return pickerView
     }()
     
-    private let currencyManager: CurrencyManager = CurrencyManager()
     let currencies: [CurrencyType] = [.KRW, .JPY, .PHP]
+    
+    private let currencyVM: CurrencyViewModel = CurrencyViewModel()
+    
     var currencyType: CurrencyType {
         return currencies[Local.DB.currencyTag]
     }
+    var cancellables: Set<AnyCancellable> = Set()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        setupView()
+        addGesture()
+        bind()
+//        getCurrencyData()
+        setLayout()
+    }
+    
+    func setupView() {
         remittanceAmountLabel.textField.delegate = self
         
         pickerView.delegate = self
@@ -115,46 +126,26 @@ class MainViewController: UIViewController {
         
         inquiryTimeLabel.refreshButton.addTarget(self, action: #selector(getCurrencyData), for: .touchUpInside)
         
+    }
+    
+    func addGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScreen))
+        
         view.addGestureRecognizer(tapGesture)
-        
-        getCurrencyData()
-        setLayout()
     }
     
-    //MARK: - hide keyboard
-    @objc func didTapScreen() {
-        view.endEditing(true)
-    }
-    
-    @objc func getCurrencyData() {
-        inquiryTimeLabel.startLodingAnimation()
-        
-        currencyManager.getCurrencyData { result in
-            switch result {
-            case .success(let res):
-                DispatchQueue.main.async {
-                    guard let text = self.remittanceAmountLabel.textField.text else { return }
-                    
-                    let currencyName = self.currencyType == .KRW ? "KRW" : self.currencyType == .JPY ? "JPY" : "PHP"
-                    let amount = self.currencyManager.getExchangeRate(type: self.currencyType)
-                    
-                    self.exchangeRateLabel.setValueText("\(amount) \(currencyName) / USD")
-                }
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-            DispatchQueue.main.async {
-                self.inquiryTimeLabel.stopLodingAnimation()
-            }
+    func bind() {
+        currencyVM.textFieldBind(remittanceAmountLabel.textField) { [weak self] in
+            let currencyName = self?.currencyType == .KRW ? "KRW" : self?.currencyType == .JPY ? "JPY" : "PHP"
+            
+            self?.calculateExchangeRate(from: $0, to: currencyName)
         }
     }
     
     func calculateExchangeRate(from usd: String, to currencyName: String) {
-        let exchageRate = currencyManager.getExchangeRate(type: currencyType)
+        let exchageRate = currencyVM.getExchangeRate(type: currencyType)
         let amount: Double = exchageRate * (Double(usd) ?? 0.0)
-        print("amount = \(exchageRate)")
+        
         resultLabel.text = "수취금액은 \(amount.toCurrency) \(currencyName) 입니다."
     }
     
@@ -218,28 +209,55 @@ extension MainViewController {
     }
 }
 
+//MARK: - Objc function
+extension MainViewController {
+    @objc func didTapScreen() {
+        view.endEditing(true)
+    }
+    
+    @objc func getCurrencyData() {
+        inquiryTimeLabel.startLodingAnimation()
+        
+        currencyVM.getCurrencyData { result in
+            switch result {
+            case .success(let res):
+                DispatchQueue.main.async {
+                    guard let text = self.remittanceAmountLabel.textField.text else { return }
+                    
+                    let currencyName = self.currencyType == .KRW ? "KRW" : self.currencyType == .JPY ? "JPY" : "PHP"
+                    let exchangeRate = self.currencyVM.getExchangeRate(type: self.currencyType)
+                    
+                    self.exchangeRateLabel.setValueText("\(exchangeRate.toCurrency) \(currencyName) / USD")
+                    self.calculateExchangeRate(from: text, to: currencyName)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            DispatchQueue.main.async {
+                self.inquiryTimeLabel.stopLodingAnimation()
+            }
+        }
+    }
+    
+}
+
 //MARK: - 숫자만 입력 받을 수 있게 설정
 extension MainViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let oldString = textField.text, let newRange = Range(range, in: oldString) else { return false }
         if !string.isEmpty && string.range(of: "^[0-9]*$", options: .regularExpression) == nil {
-            // showAlert
             showAlert(title: "입력 오류", message: "숫자만 입력해주세요")
             return false
         }
         
         let newString = oldString.replacingCharacters(in: newRange, with: string)
-        print("\(newString)|")
+        
         guard newString.count < 6, (Int(newString.isEmpty ? "0" : newString) ?? Int.max) <= 10000 else {
             showAlert(title: "입력 오류", message: "10000USD 이하만 입력 가능합니다.")
-            // showAlert
+
             return false
         }
-        
-        let currencyName = currencyType == .KRW ? "KRW" : currencyType == .JPY ? "JPY" : "PHP"
-
-        calculateExchangeRate(from: newString, to: currencyName)
-        
         return true
     }
 }
@@ -262,10 +280,10 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         Local.DB.currencyTag = row
     
         let currencyName = currencyType == .KRW ? "KRW" : currencyType == .JPY ? "JPY" : "PHP"
-        let exchangeRate = currencyManager.getExchangeRate(type: currencyType)
+        let exchangeRate = currencyVM.getExchangeRate(type: currencyType)
         
         receivingCountryLabel.setValueText("\(currencyType.rawValue)")
-        exchangeRateLabel.setValueText("\(exchangeRate) \(currencyName) / USD")
+        exchangeRateLabel.setValueText("\(exchangeRate.toCurrency) \(currencyName) / USD")
         
         guard let usd = remittanceAmountLabel.textField.text else { return }
         
