@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CD2843912B5C0C15004F8D32 /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2843902B5C0C15004F8D32 /* Local.swift */; };
+		CD2843932B5C183C004F8D32 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2843922B5C183C004F8D32 /* Date+Extension.swift */; };
+		CD2843962B5CC538004F8D32 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2843952B5CC538004F8D32 /* Double+Extension.swift */; };
 		CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */; };
 		CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCD2B58011A00639CB9 /* AppDelegate.swift */; };
 		CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		CD2843902B5C0C15004F8D32 /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
+		CD2843922B5C183C004F8D32 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		CD2843952B5CC538004F8D32 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyType+Enum.swift"; sourceTree = "<group>"; };
 		CD902FCA2B58011A00639CB9 /* ExchangeRateCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRateCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD902FCD2B58011A00639CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +61,15 @@
 			path = LocalDataBase;
 			sourceTree = "<group>";
 		};
+		CD2843942B5C19A4004F8D32 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CD2843922B5C183C004F8D32 /* Date+Extension.swift */,
+				CD2843952B5CC538004F8D32 /* Double+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		CD902FC12B58011A00639CB9 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,7 @@
 		CD902FCC2B58011A00639CB9 /* ExchangeRateCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				CD2843942B5C19A4004F8D32 /* Extension */,
 				CD28438F2B5C0C02004F8D32 /* LocalDataBase */,
 				CDC3DD142B5B89DA00926CB3 /* ViewModel */,
 				CDC3DD112B5B867600926CB3 /* Model */,
@@ -196,8 +210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDC3DD132B5B87A200926CB3 /* DataModel.swift in Sources */,
+				CD2843932B5C183C004F8D32 /* Date+Extension.swift in Sources */,
 				CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */,
 				CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */,
+				CD2843962B5CC538004F8D32 /* Double+Extension.swift in Sources */,
 				CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */,
 				CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */,
 				CD2843912B5C0C15004F8D32 /* Local.swift in Sources */,

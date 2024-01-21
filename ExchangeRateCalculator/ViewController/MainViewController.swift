@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.keyLabel.text = "조회시간 :"
-        label.valueLabel.text = ""
+        label.setValueText(Date().toString)
         label.refreshButton.isHidden = false
         
         return label
@@ -118,7 +118,7 @@ class MainViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScreen))
         view.addGestureRecognizer(tapGesture)
         
-//        getCurrencyData()
+        getCurrencyData()
         setLayout()
     }
     
@@ -152,10 +152,10 @@ class MainViewController: UIViewController {
     }
     
     func calculateExchangeRate(from usd: String, to currencyName: String) {
-        let exchageRate = currencyManager.getExchangeRate(type: currencies[Local.DB.currencyTag])
-        let amount = exchageRate * (Double(usd) ?? 0.0)
-        
-        resultLabel.text = "수취금액은 \(amount) \(currencyName) 입니다."
+        let exchageRate = currencyManager.getExchangeRate(type: currencyType)
+        let amount: Double = exchageRate * (Double(usd) ?? 0.0)
+        print("amount = \(exchageRate)")
+        resultLabel.text = "수취금액은 \(amount.toCurrency) \(currencyName) 입니다."
     }
     
     func showAlert(title: String, message: String) {

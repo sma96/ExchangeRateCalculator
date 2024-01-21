@@ -40,7 +40,9 @@ extension CurrencyManager {
         transaction.addQuery("access_key", GetCurrencyDataTransaction.apiKey)
         transaction.addQuery("source", "USD")
         transaction.addQuery("currencies", "KRW, JPY, PHP")
+    
         urlComponents.queryItems = transaction.getQuery()
+        
         var request = URLRequest(url: urlComponents.url!)
         
         request.httpMethod = "GET"
