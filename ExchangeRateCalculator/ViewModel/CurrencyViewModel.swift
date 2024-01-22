@@ -13,10 +13,6 @@ public class CurrencyViewModel {
     private var completion: ((Result<CurrencyResponse, NetworkError>) -> Void)?
     private var cancellables: Set<AnyCancellable> = Set()
     private var APIService: CurrencyAPIService = CurrencyAPIService()
-    
-    func getCurrency() -> CurrencyResponse? {
-        return currencyModel.response
-    }
 }
 
 //MARK: - textField subscribe 로직
@@ -37,8 +33,12 @@ extension CurrencyViewModel {
     }
 }
 
-//MARK: - API 통신 로직
+//MARK: - getter 및 API 통신 로직
 extension CurrencyViewModel {
+    func getCurrency() -> CurrencyResponse? {
+        return currencyModel.response
+    }
+    
     func getExchangeRate(type: CurrencyType) -> Double {
         switch type {
         case .KRW:

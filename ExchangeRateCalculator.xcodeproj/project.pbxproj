@@ -13,6 +13,7 @@
 		CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */; };
 		CD7DAEE92B5D63120036CAC3 /* CurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7DAEE82B5D63120036CAC3 /* CurrencyAPIService.swift */; };
 		CD7DAEF12B5E1D360036CAC3 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7DAEF02B5E1D360036CAC3 /* Bundle+Extension.swift */; };
+		CD7DAEF32B5E9E350036CAC3 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7DAEF22B5E9E350036CAC3 /* ViewController+Extension.swift */; };
 		CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCD2B58011A00639CB9 /* AppDelegate.swift */; };
 		CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */; };
 		CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FD12B58011A00639CB9 /* MainViewController.swift */; };
@@ -34,6 +35,7 @@
 		CD7DAEED2B5E1C100036CAC3 /* Config_Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config_Debug.xcconfig; sourceTree = "<group>"; };
 		CD7DAEEE2B5E1C1B0036CAC3 /* Config_Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config_Release.xcconfig; sourceTree = "<group>"; };
 		CD7DAEF02B5E1D360036CAC3 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		CD7DAEF22B5E9E350036CAC3 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		CD902FCA2B58011A00639CB9 /* ExchangeRateCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRateCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD902FCD2B58011A00639CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				CD2843922B5C183C004F8D32 /* Date+Extension.swift */,
 				CD2843952B5CC538004F8D32 /* Double+Extension.swift */,
 				CD7DAEF02B5E1D360036CAC3 /* Bundle+Extension.swift */,
+				CD7DAEF22B5E9E350036CAC3 /* ViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				CD2843962B5CC538004F8D32 /* Double+Extension.swift in Sources */,
 				CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */,
 				CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */,
+				CD7DAEF32B5E9E350036CAC3 /* ViewController+Extension.swift in Sources */,
 				CD2843912B5C0C15004F8D32 /* Local.swift in Sources */,
 				CDC3DD162B5B89E600926CB3 /* CurrencyViewModel.swift in Sources */,
 				CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */,

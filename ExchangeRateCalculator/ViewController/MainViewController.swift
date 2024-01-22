@@ -93,14 +93,13 @@ class MainViewController: UIViewController {
         return pickerView
     }()
     
-    let currencies: [CurrencyType] = [.KRW, .JPY, .PHP]
+    private let currencies: [CurrencyType] = [.KRW, .JPY, .PHP]
     
-    private let currencyVM: CurrencyViewModel = CurrencyViewModel()
+    private var currencyVM: CurrencyViewModel = CurrencyViewModel()
     
     var currencyType: CurrencyType {
         return currencies[Local.DB.currencyTag]
     }
-    var cancellables: Set<AnyCancellable> = Set()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,67 +107,12 @@ class MainViewController: UIViewController {
         setupView()
         addGesture()
         bind()
-        //        getCurrencyData()
+        getCurrencyData()
         setLayout()
-    }
-    
-    func setupView() {
-        let toolBar = UIToolbar(frame: CGRect(x: 0.0,
-                                              y: 0.0,
-                                              width: UIScreen.main.bounds.size.width,
-                                              height: 45.0))
-        
-        let doneButton = UIBarButtonItem(title: "done", style: .done, target: self, action: #selector(didTapScreen))
-        
-        toolBar.setItems([doneButton], animated: false)
-        
-        remittanceAmountLabel.textField.inputAccessoryView = toolBar
-        remittanceAmountLabel.textField.delegate = self
-        
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        pickerView.selectRow(Local.DB.currencyTag, inComponent: 0, animated: false)
-        
-        let currencyName = currencyType == .KRW ? "KRW" : currencyType == .JPY ? "JPY" : "PHP"
-        
-        receivingCountryLabel.setValueText("\(currencyType.rawValue)")
-        exchangeRateLabel.setValueText("?? \(currencyName) / USD")
-        
-        inquiryTimeLabel.refreshButton.addTarget(self, action: #selector(getCurrencyData), for: .touchUpInside)
-        
-    }
-    
-    func addGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScreen))
-        
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    func bind() {
-        currencyVM.textFieldBind(remittanceAmountLabel.textField) { [weak self] in
-            let currencyName = self?.currencyType == .KRW ? "KRW" : self?.currencyType == .JPY ? "JPY" : "PHP"
-            
-            self?.calculateExchangeRate(from: $0, to: currencyName)
-        }
-    }
-    
-    func calculateExchangeRate(from usd: String, to currencyName: String) {
-        let exchageRate = currencyVM.getExchangeRate(type: currencyType)
-        let amount: Double = exchageRate * (Double(usd) ?? 0.0)
-        
-        resultLabel.text = "수취금액은 \(amount.toCurrency) \(currencyName) 입니다."
-    }
-    
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .cancel)
-        
-        alert.addAction(action)
-        
-        present(alert, animated: false)
     }
 }
 
+//MARK: - view layout setting
 extension MainViewController {
     private func setLayout() {
         view.addSubview(titlelabel)
@@ -219,6 +163,60 @@ extension MainViewController {
     }
 }
 
+extension MainViewController {
+    func setupView() {
+        setTextField()
+        setPickerView()
+        
+        let currencyName = currencyType == .KRW ? "KRW" : currencyType == .JPY ? "JPY" : "PHP"
+        
+        receivingCountryLabel.setValueText("\(currencyType.rawValue)")
+        exchangeRateLabel.setValueText("?? \(currencyName) / USD")
+        
+        inquiryTimeLabel.refreshButton.addTarget(self, action: #selector(getCurrencyData), for: .touchUpInside)
+    }
+    
+    func setTextField() {
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0,
+                                              y: 0.0,
+                                              width: UIScreen.main.bounds.size.width,
+                                              height: 45.0))
+        
+        let doneButton = UIBarButtonItem(title: "done", style: .done, target: self, action: #selector(didTapScreen))
+        
+        toolBar.setItems([doneButton], animated: false)
+        remittanceAmountLabel.textField.inputAccessoryView = toolBar
+        remittanceAmountLabel.textField.delegate = self
+    }
+    
+    func setPickerView() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.selectRow(Local.DB.currencyTag, inComponent: 0, animated: false)
+    }
+    
+    func addGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScreen))
+        
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    func bind() {
+        currencyVM.textFieldBind(remittanceAmountLabel.textField) { [weak self] in
+            let currencyName = self?.currencyType == .KRW ? "KRW" : self?.currencyType == .JPY ? "JPY" : "PHP"
+            
+            self?.calculateExchangeRate(from: $0, to: currencyName)
+        }
+    }
+    
+    func calculateExchangeRate(from usd: String, to currencyName: String) {
+        let exchageRate = currencyVM.getExchangeRate(type: currencyType)
+        let amount: Double = exchageRate * (Double(usd) ?? 0.0)
+        
+        resultLabel.text = "수취금액은 \(amount.toCurrency) \(currencyName) 입니다."
+    }
+}
+
 //MARK: - Objc function
 extension MainViewController {
     @objc func didTapScreen() {
@@ -251,7 +249,6 @@ extension MainViewController {
             }
         }
     }
-    
 }
 
 //MARK: - 숫자만 입력 받을 수 있게 설정
