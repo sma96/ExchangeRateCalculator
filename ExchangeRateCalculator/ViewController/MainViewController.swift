@@ -108,11 +108,21 @@ class MainViewController: UIViewController {
         setupView()
         addGesture()
         bind()
-//        getCurrencyData()
+        //        getCurrencyData()
         setLayout()
     }
     
     func setupView() {
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0,
+                                              y: 0.0,
+                                              width: UIScreen.main.bounds.size.width,
+                                              height: 45.0))
+        
+        let doneButton = UIBarButtonItem(title: "done", style: .done, target: self, action: #selector(didTapScreen))
+        
+        toolBar.setItems([doneButton], animated: false)
+        
+        remittanceAmountLabel.textField.inputAccessoryView = toolBar
         remittanceAmountLabel.textField.delegate = self
         
         pickerView.delegate = self
@@ -232,7 +242,9 @@ extension MainViewController {
                 }
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(title: "통신 오류", message: "데이터를 불러오지 못했습니다.\n잠시 후 다시 시도해주세요")
+                }
             }
             DispatchQueue.main.async {
                 self.inquiryTimeLabel.stopLodingAnimation()
@@ -244,6 +256,7 @@ extension MainViewController {
 
 //MARK: - 숫자만 입력 받을 수 있게 설정
 extension MainViewController: UITextFieldDelegate {
+    // 참고 주소 - https://ios-development.tistory.com/688
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let oldString = textField.text, let newRange = Range(range, in: oldString) else { return false }
         if !string.isEmpty && string.range(of: "^[0-9]*$", options: .regularExpression) == nil {

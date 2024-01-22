@@ -12,13 +12,14 @@
 		CD2843962B5CC538004F8D32 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2843952B5CC538004F8D32 /* Double+Extension.swift */; };
 		CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */; };
 		CD7DAEE92B5D63120036CAC3 /* CurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7DAEE82B5D63120036CAC3 /* CurrencyAPIService.swift */; };
+		CD7DAEF12B5E1D360036CAC3 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7DAEF02B5E1D360036CAC3 /* Bundle+Extension.swift */; };
 		CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCD2B58011A00639CB9 /* AppDelegate.swift */; };
 		CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */; };
 		CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FD12B58011A00639CB9 /* MainViewController.swift */; };
 		CD902FD52B58011A00639CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD902FD32B58011A00639CB9 /* Main.storyboard */; };
 		CD902FD72B58012000639CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD902FD62B58012000639CB9 /* Assets.xcassets */; };
 		CD902FE32B5AAF8C00639CB9 /* KeyValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */; };
-		CDC3DD132B5B87A200926CB3 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD122B5B87A100926CB3 /* DataModel.swift */; };
+		CDC3DD132B5B87A200926CB3 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD122B5B87A100926CB3 /* CurrencyModel.swift */; };
 		CDC3DD162B5B89E600926CB3 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD152B5B89E600926CB3 /* CurrencyViewModel.swift */; };
 		CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */; };
 		CDC3DD1E2B5BB9BA00926CB3 /* NetworkError+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */; };
@@ -30,6 +31,9 @@
 		CD2843952B5CC538004F8D32 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyType+Enum.swift"; sourceTree = "<group>"; };
 		CD7DAEE82B5D63120036CAC3 /* CurrencyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPIService.swift; sourceTree = "<group>"; };
+		CD7DAEED2B5E1C100036CAC3 /* Config_Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config_Debug.xcconfig; sourceTree = "<group>"; };
+		CD7DAEEE2B5E1C1B0036CAC3 /* Config_Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config_Release.xcconfig; sourceTree = "<group>"; };
+		CD7DAEF02B5E1D360036CAC3 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		CD902FCA2B58011A00639CB9 /* ExchangeRateCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRateCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD902FCD2B58011A00639CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD902FCF2B58011A00639CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,7 +42,7 @@
 		CD902FD62B58012000639CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD902FDB2B58012000639CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueLabel.swift; sourceTree = "<group>"; };
-		CDC3DD122B5B87A100926CB3 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		CDC3DD122B5B87A100926CB3 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		CDC3DD152B5B89E600926CB3 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyDataTranjaction.swift; sourceTree = "<group>"; };
 		CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Enum.swift"; sourceTree = "<group>"; };
@@ -68,8 +72,27 @@
 			children = (
 				CD2843922B5C183C004F8D32 /* Date+Extension.swift */,
 				CD2843952B5CC538004F8D32 /* Double+Extension.swift */,
+				CD7DAEF02B5E1D360036CAC3 /* Bundle+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CD7DAEEC2B5D6B970036CAC3 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */,
+				CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		CD7DAEEF2B5E1C200036CAC3 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				CD7DAEEE2B5E1C1B0036CAC3 /* Config_Release.xcconfig */,
+				CD7DAEED2B5E1C100036CAC3 /* Config_Debug.xcconfig */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		CD902FC12B58011A00639CB9 = {
@@ -91,6 +114,8 @@
 		CD902FCC2B58011A00639CB9 /* ExchangeRateCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				CD7DAEEF2B5E1C200036CAC3 /* Config */,
+				CD7DAEEC2B5D6B970036CAC3 /* Enum */,
 				CD2843942B5C19A4004F8D32 /* Extension */,
 				CD28438F2B5C0C02004F8D32 /* LocalDataBase */,
 				CDC3DD142B5B89DA00926CB3 /* ViewModel */,
@@ -117,10 +142,8 @@
 		CDC3DD112B5B867600926CB3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CDC3DD122B5B87A100926CB3 /* DataModel.swift */,
+				CDC3DD122B5B87A100926CB3 /* CurrencyModel.swift */,
 				CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */,
-				CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */,
-				CD771BA82B5BDC0300074789 /* CurrencyType+Enum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,7 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDC3DD132B5B87A200926CB3 /* DataModel.swift in Sources */,
+				CDC3DD132B5B87A200926CB3 /* CurrencyModel.swift in Sources */,
+				CD7DAEF12B5E1D360036CAC3 /* Bundle+Extension.swift in Sources */,
 				CD2843932B5C183C004F8D32 /* Date+Extension.swift in Sources */,
 				CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */,
 				CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */,
@@ -363,6 +387,7 @@
 		};
 		CD902FDF2B58012000639CB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD7DAEED2B5E1C100036CAC3 /* Config_Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -391,6 +416,7 @@
 		};
 		CD902FE02B58012000639CB9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD7DAEEE2B5E1C1B0036CAC3 /* Config_Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

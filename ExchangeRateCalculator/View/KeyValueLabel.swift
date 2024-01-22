@@ -125,7 +125,6 @@ extension KeyValueLabel {
     }
     
     func setValueText(_ text: String) {
-        print("world")
         valueLabel.text = text
         
         setValueLabelWidth(valueLabel.sizeThatFits(CGSize(width: 250, height: 25)))

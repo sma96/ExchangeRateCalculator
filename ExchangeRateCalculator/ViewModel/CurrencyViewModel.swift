@@ -9,17 +9,19 @@ import UIKit
 import Combine
 
 public class CurrencyViewModel {
-    private var currency: DataModel = DataModel()
+    private var currencyModel: CurrencyModel = CurrencyModel()
     private var completion: ((Result<CurrencyResponse, NetworkError>) -> Void)?
     private var cancellables: Set<AnyCancellable> = Set()
     private var APIService: CurrencyAPIService = CurrencyAPIService()
     
     func getCurrency() -> CurrencyResponse? {
-        return currency.response
+        return currencyModel.response
     }
 }
 
+//MARK: - textField subscribe 로직
 extension CurrencyViewModel {
+    // 참고 주소 - https://developer.apple.com/forums/thread/693602
     func textFieldBind(_ textField: UITextField, completion: @escaping (String) -> Void) {
         let textFieldPublisher = NotificationCenter.default.publisher(
             for: UITextField.textDidChangeNotification,
@@ -34,26 +36,29 @@ extension CurrencyViewModel {
             .store(in: &cancellables)
     }
 }
+
+//MARK: - API 통신 로직
 extension CurrencyViewModel {
     func getExchangeRate(type: CurrencyType) -> Double {
         switch type {
         case .KRW:
-            return currency.response?.quotes.krw ?? 0.0
+            return currencyModel.response?.quotes.krw ?? 0.0
         case .JPY:
-            return currency.response?.quotes.jpy ?? 0.0
+            return currencyModel.response?.quotes.jpy ?? 0.0
         case .PHP:
-            return currency.response?.quotes.php ?? 0.0
+            return currencyModel.response?.quotes.php ?? 0.0
         }
     }
     
     func getRequest() -> URLRequest? {
         var transaction = GetCurrencyDataTransaction()
         
-        guard var urlComponents = URLComponents(string: transaction.url) else {
+        guard var urlComponents = URLComponents(string: transaction.url),
+              let apiKey = Bundle.main.currencyAPIKey else {
             return nil
         }
         
-        transaction.addQuery("access_key", GetCurrencyDataTransaction.apiKey)
+        transaction.addQuery("access_key", apiKey)
         transaction.addQuery("source", "USD")
         transaction.addQuery("currencies", "KRW, JPY, PHP")
         
@@ -83,7 +88,7 @@ extension CurrencyViewModel {
                     print("finished")
                 }
             } receiveValue: { [weak self] response in
-                self?.currency.response = response
+                self?.currencyModel.response = response
                 completion(.success(response))
             }.store(in: &cancellables)
     }

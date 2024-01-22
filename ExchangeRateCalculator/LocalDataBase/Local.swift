@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 선택한 언어 저장 후 다시 앱 시작할 때 저장한 언어로 설정하기 위해 구현
 struct Local {
     static var DB = Local()
     

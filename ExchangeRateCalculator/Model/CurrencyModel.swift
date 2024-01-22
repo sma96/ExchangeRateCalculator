@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DataModel {
+struct CurrencyModel {
     var response: CurrencyResponse?
 }
 

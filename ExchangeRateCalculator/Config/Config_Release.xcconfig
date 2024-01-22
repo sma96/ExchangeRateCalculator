@@ -1,0 +1,11 @@
+//
+//  Config_Release.xcconfig
+//  ExchangeRateCalculator
+//
+//  Created by 마석우 on 1/22/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+CURRENCY_API_KEY = c93c20968ed6f9adfe0cfd65341593c7
