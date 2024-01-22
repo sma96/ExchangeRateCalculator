@@ -8,7 +8,6 @@
 import Foundation
 
 struct GetCurrencyDataTransaction {
-    static let apiKey = "c93c20968ed6f9adfe0cfd65341593c7"
     let url: String = "http://api.currencylayer.com/live"
     private var queries: [URLQueryItem] = [URLQueryItem]()
     
