@@ -95,7 +95,7 @@ class MainViewController: UIViewController {
     
     private let currencies: [CurrencyType] = [.KRW, .JPY, .PHP]
     
-    private var currencyVM: CurrencyViewModel = CurrencyViewModel()
+    private var currencyVM: CurrencyViewModel? = CurrencyViewModel()
     
     var currencyType: CurrencyType {
         return currencies[Local.DB.currencyTag]
@@ -109,6 +109,10 @@ class MainViewController: UIViewController {
         bind()
         getCurrencyData()
         setLayout()
+    }
+    
+    deinit {
+        currencyVM = nil
     }
 }
 
@@ -202,7 +206,7 @@ extension MainViewController {
     }
     
     func bind() {
-        currencyVM.textFieldBind(remittanceAmountLabel.textField) { [weak self] in
+        currencyVM!.textFieldBind(remittanceAmountLabel.textField) { [weak self] in
             let currencyName = self?.currencyType == .KRW ? "KRW" : self?.currencyType == .JPY ? "JPY" : "PHP"
             
             self?.calculateExchangeRate(from: $0, to: currencyName)
@@ -210,7 +214,7 @@ extension MainViewController {
     }
     
     func calculateExchangeRate(from usd: String, to currencyName: String) {
-        let exchageRate = currencyVM.getExchangeRate(type: currencyType)
+        let exchageRate = currencyVM!.getExchangeRate(type: currencyType)
         let amount: Double = exchageRate * (Double(usd) ?? 0.0)
         
         resultLabel.text = "수취금액은 \(amount.toCurrency) \(currencyName) 입니다."
@@ -226,22 +230,33 @@ extension MainViewController {
     @objc func getCurrencyData() {
         inquiryTimeLabel.startLodingAnimation()
         
-        currencyVM.getCurrencyData { result in
+        currencyVM!.getCurrencyData { result in
             switch result {
             case .success(let res):
                 DispatchQueue.main.async {
                     guard let text = self.remittanceAmountLabel.textField.text else { return }
                     
                     let currencyName = self.currencyType == .KRW ? "KRW" : self.currencyType == .JPY ? "JPY" : "PHP"
-                    let exchangeRate = self.currencyVM.getExchangeRate(type: self.currencyType)
+                    let exchangeRate = self.currencyVM!.getExchangeRate(type: self.currencyType)
                     
                     self.exchangeRateLabel.setValueText("\(exchangeRate.toCurrency) \(currencyName) / USD")
                     self.calculateExchangeRate(from: text, to: currencyName)
                 }
                 
             case .failure(let error):
-                DispatchQueue.main.async {
-                    self.showAlert(title: "통신 오류", message: "데이터를 불러오지 못했습니다.\n잠시 후 다시 시도해주세요")
+                switch error {
+                case .DecodeError:
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "데이터 오류", message: "데이터를 불러오지 못했습니다.\n잠시 후 다시 시도해주세요")
+                    }
+                case .URLError:
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "통신 오류", message: "데이터를 불러오지 못했습니다.\n잠시 후 다시 시도해주세요")
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "예기치 못한 오류", message: "데이터를 불러오지 못했습니다.\n잠시 후 다시 시도해주세요")
+                    }
                 }
             }
             DispatchQueue.main.async {
@@ -290,7 +305,7 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         Local.DB.currencyTag = row
     
         let currencyName = currencyType == .KRW ? "KRW" : currencyType == .JPY ? "JPY" : "PHP"
-        let exchangeRate = currencyVM.getExchangeRate(type: currencyType)
+        let exchangeRate = currencyVM!.getExchangeRate(type: currencyType)
         
         receivingCountryLabel.setValueText("\(currencyType.rawValue)")
         exchangeRateLabel.setValueText("\(exchangeRate.toCurrency) \(currencyName) / USD")

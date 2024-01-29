@@ -53,12 +53,11 @@ extension CurrencyViewModel {
     func getRequest() -> URLRequest? {
         var transaction = GetCurrencyDataTransaction()
         
-        guard var urlComponents = URLComponents(string: transaction.url),
-              let apiKey = Bundle.main.currencyAPIKey else {
+        guard var urlComponents = URLComponents(string: transaction.url) else {
             return nil
         }
         
-        transaction.addQuery("access_key", apiKey)
+        transaction.addQuery("access_key", Secret.shared.apiKey)
         transaction.addQuery("source", "USD")
         transaction.addQuery("currencies", "KRW, JPY, PHP")
         
@@ -82,8 +81,14 @@ extension CurrencyViewModel {
             .sink {
                 switch $0 {
                 case .failure(let error):
-                    print(error.localizedDescription)
-                    completion(.failure(.UnknownError))
+                    switch error {
+                    case .DecodeError:
+                        completion(.failure(.DecodeError))
+                    case .URLError:
+                        completion(.failure(.URLError))
+                    default:
+                        completion(.failure(.UnknownError))
+                    }
                 case .finished:
                     print("finished")
                 }

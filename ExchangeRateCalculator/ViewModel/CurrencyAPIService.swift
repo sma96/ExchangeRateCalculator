@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class CurrencyAPIService {
-    public func fetchData(_ request: URLRequest) -> AnyPublisher<CurrencyResponse, Error> {
+    public func fetchData(_ request: URLRequest) -> AnyPublisher<CurrencyResponse, NetworkError> {
         let decoder = JSONDecoder()
         
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -17,6 +17,16 @@ class CurrencyAPIService {
         return URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(type: CurrencyResponse.self, decoder: decoder)
+            .mapError({ error in
+                switch error {
+                case is DecodingError:
+                    return NetworkError.DecodeError
+                case is URLError:
+                    return NetworkError.URLError
+                default:
+                    return NetworkError.UnknownError
+                }
+            })
             .eraseToAnyPublisher()
     }
 }

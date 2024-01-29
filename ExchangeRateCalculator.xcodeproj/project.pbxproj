@@ -24,6 +24,8 @@
 		CDC3DD162B5B89E600926CB3 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD152B5B89E600926CB3 /* CurrencyViewModel.swift */; };
 		CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */; };
 		CDC3DD1E2B5BB9BA00926CB3 /* NetworkError+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */; };
+		CDFC05912B67BD49001E3789 /* Obfuscator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC05902B67BD49001E3789 /* Obfuscator.swift */; };
+		CDFC05932B67C606001E3789 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC05922B67C606001E3789 /* Secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		CDC3DD152B5B89E600926CB3 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		CDC3DD172B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyDataTranjaction.swift; sourceTree = "<group>"; };
 		CDC3DD1D2B5BB9BA00926CB3 /* NetworkError+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Enum.swift"; sourceTree = "<group>"; };
+		CDFC05902B67BD49001E3789 /* Obfuscator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obfuscator.swift; sourceTree = "<group>"; };
+		CDFC05922B67C606001E3789 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		CD902FCC2B58011A00639CB9 /* ExchangeRateCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				CD9513D32B67BCFB009C9C5A /* Secrets */,
 				CD7DAEEF2B5E1C200036CAC3 /* Config */,
 				CD7DAEEC2B5D6B970036CAC3 /* Enum */,
 				CD2843942B5C19A4004F8D32 /* Extension */,
@@ -140,6 +145,15 @@
 				CD902FE22B5AAF8C00639CB9 /* KeyValueLabel.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CD9513D32B67BCFB009C9C5A /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				CDFC05902B67BD49001E3789 /* Obfuscator.swift */,
+				CDFC05922B67C606001E3789 /* Secret.swift */,
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 		CDC3DD112B5B867600926CB3 /* Model */ = {
@@ -241,12 +255,14 @@
 				CDC3DD132B5B87A200926CB3 /* CurrencyModel.swift in Sources */,
 				CD7DAEF12B5E1D360036CAC3 /* Bundle+Extension.swift in Sources */,
 				CD2843932B5C183C004F8D32 /* Date+Extension.swift in Sources */,
+				CDFC05912B67BD49001E3789 /* Obfuscator.swift in Sources */,
 				CD771BA92B5BDC0300074789 /* CurrencyType+Enum.swift in Sources */,
 				CD902FD22B58011A00639CB9 /* MainViewController.swift in Sources */,
 				CD2843962B5CC538004F8D32 /* Double+Extension.swift in Sources */,
 				CD902FCE2B58011A00639CB9 /* AppDelegate.swift in Sources */,
 				CD902FD02B58011A00639CB9 /* SceneDelegate.swift in Sources */,
 				CD7DAEF32B5E9E350036CAC3 /* ViewController+Extension.swift in Sources */,
+				CDFC05932B67C606001E3789 /* Secret.swift in Sources */,
 				CD2843912B5C0C15004F8D32 /* Local.swift in Sources */,
 				CDC3DD162B5B89E600926CB3 /* CurrencyViewModel.swift in Sources */,
 				CDC3DD182B5B8B6600926CB3 /* GetCurrencyDataTranjaction.swift in Sources */,
@@ -405,6 +421,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -434,6 +451,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
