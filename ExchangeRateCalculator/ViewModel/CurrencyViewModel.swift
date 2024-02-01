@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-public class CurrencyViewModel {
+final class CurrencyViewModel {
     private var currencyModel: CurrencyModel = CurrencyModel()
     private var completion: ((Result<CurrencyResponse, NetworkError>) -> Void)?
     private var cancellables: Set<AnyCancellable> = Set()

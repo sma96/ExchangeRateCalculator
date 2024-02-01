@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     let titlelabel: UILabel = {
         let label = UILabel()
         

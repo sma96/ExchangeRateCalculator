@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class CurrencyAPIService {
+final class CurrencyAPIService {
     public func fetchData(_ request: URLRequest) -> AnyPublisher<CurrencyResponse, NetworkError> {
         let decoder = JSONDecoder()
         

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeyValueLabel: UIView {
+final class KeyValueLabel: UIView {
     let stackView: UIStackView = {
         let stackView = UIStackView()
         

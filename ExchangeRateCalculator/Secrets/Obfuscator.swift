@@ -11,7 +11,7 @@ import Foundation
  난독화 코드
  출처 - https://gist.github.com/DejanEnspyra/80e259e3c9adf5e46632631b49cd1007
 */
- class Obfuscator {
+final class Obfuscator {
     
     // MARK: - Variables
     
